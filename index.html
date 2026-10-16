@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obsidian Sync Drive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --border: #e4ddd0;
+    --ink: #221f1a;
+    --ink-soft: #5a5347;
+    --accent: #2f4d8f;
+    --accent-soft: #e8edf7;
+    --mono-bg: #f1ede3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17160f;
+      --surface: #201e16;
+      --border: #39352a;
+      --ink: #efe9dc;
+      --ink-soft: #b3ab99;
+      --accent: #8fa8dd;
+      --accent-soft: #262b3c;
+      --mono-bg: #27241a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17160f;
+    --surface: #201e16;
+    --border: #39352a;
+    --ink: #efe9dc;
+    --ink-soft: #b3ab99;
+    --accent: #8fa8dd;
+    --accent-soft: #262b3c;
+    --mono-bg: #27241a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  main { max-width: 640px; width: 100%; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.6rem;
+  }
+
+  h1 {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 0.5rem;
+  }
+
+  .tagline {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin: 0 0 2.6rem;
+    max-width: 34ch;
+  }
+
+  section { margin-bottom: 2.8rem; scroll-margin-top: 2rem; }
+
+  h2 {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin: 0 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 .num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  p { margin: 0 0 1rem; max-width: 62ch; }
+  p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0 0 1rem; padding-left: 1.25rem; max-width: 62ch; }
+  li { margin-bottom: 0.5rem; }
+  li:last-child { margin-bottom: 0; }
+
+  code, .scope {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 0.85em;
+    background: var(--mono-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.08em 0.4em;
+  }
+
+  .fact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .fact {
+    background: var(--surface);
+    padding: 1rem 1.1rem;
+  }
+  .fact-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 0.35rem;
+  }
+  .fact-value {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 0.95rem;
+  }
+
+  .contact {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+  }
+  .contact a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .contact a:hover, .contact a:focus-visible { text-decoration: underline; }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
+
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Persönliches Projekt &middot; keine kommerzielle Anwendung</p>
+  <h1 id="start">Obsidian Sync Drive</h1>
+  <p class="tagline">Ein privates Werkzeug, das einen einzelnen Google-Drive-Ordner mit einem lokalen Obsidian-Vault abgleicht.</p>
+
+  <section aria-labelledby="ueber-heading">
+    <h2 id="ueber-heading"><span class="num">01</span> Worum geht's</h2>
+    <p>
+      <strong>Obsidian Sync Drive</strong> (intern: <code>drive-sync</code>) ist ein
+      selbst geschriebenes, nicht öffentlich verteiltes Programm. Es läuft auf einem
+      privaten Server und gleicht ausschließlich den Google-Drive-Ordner
+      <code>Schule</code> mit einem lokalen Ordner ab, der per Obsidian Sync
+      weiterverteilt wird. Es gibt keine Nutzeroberfläche, keine Anmeldung durch
+      Dritte und keine Verbreitung an andere Nutzer.
+    </p>
+    <div class="fact-grid">
+      <div class="fact">
+        <p class="fact-label">Betreiber</p>
+        <p class="fact-value">Einzelperson, privater Gebrauch</p>
+      </div>
+      <div class="fact">
+        <p class="fact-label">Angefragter Scope</p>
+        <p class="fact-value"><span class="scope">.../auth/drive</span></p>
+      </div>
+      <div class="fact">
+        <p class="fact-label">Sichtbar für</p>
+        <p class="fact-value">Nur den Kontoinhaber selbst</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="datenschutz-heading">
+    <h2 id="datenschutz-heading"><span class="num">02</span> <span id="datenschutz">Datenschutzerklärung</span></h2>
+    <p>Diese Anwendung greift über die Google-Drive-API auf das eigene Google-Konto des Betreibers zu. Es gilt:</p>
+    <ul>
+      <li>Es werden ausschließlich Dateien innerhalb eines einzigen, vom Betreiber selbst angelegten Drive-Ordners gelesen, erstellt, aktualisiert oder gelöscht.</li>
+      <li>Keine Daten werden an Dritte weitergegeben, verkauft oder zu Werbezwecken verwendet.</li>
+      <li>Keine Daten werden außerhalb der eigenen Infrastruktur des Betreibers gespeichert, abgesehen vom direkten Datenaustausch mit der Google-Drive-API selbst.</li>
+      <li>Der Zugriff lässt sich jederzeit unter <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a> widerrufen.</li>
+    </ul>
+    <p>Da diese Anwendung ausschließlich für den persönlichen Gebrauch des Betreibers bestimmt ist, hat Google sie nicht überprüft. Der beim Anmelden angezeigte Warnhinweis ist dadurch erwartbar.</p>
+  </section>
+
+  <footer>Zuletzt aktualisiert: Oktober 2026</footer>
+</main>
+</body>
+</html>
